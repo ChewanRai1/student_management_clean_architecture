@@ -7,22 +7,22 @@ import 'package:student_management_starter/features/batch/domain/repository/batc
 
 final batchLocalRepository = Provider<IBatchRepository>((ref) {
   return BatchLocalRepository(
-    batchLocalDatasource: ref.read(batchLocalDatasourceProvider),
+    batchLocalDataSource: ref.read(batchLocalDatasourceProvider),
   );
 });
 
 class BatchLocalRepository implements IBatchRepository {
-  final BatchLocalDatasource batchLocalDatasource;
-  BatchLocalRepository({required this.batchLocalDatasource});
+  final BatchLocalDatasource batchLocalDataSource;
+  BatchLocalRepository({required this.batchLocalDataSource});
   @override
   Future<Either<Failure, bool>> addBatch(BatchEntity batch) {
     // TODO: implement addBatch
-    throw UnimplementedError();
+    return batchLocalDataSource.addBatch(batch);
   }
 
   @override
   Future<Either<Failure, List<BatchEntity>>> getAllBatches() {
     // TODO: implement getAllBatches
-    throw UnimplementedError();
+    return batchLocalDataSource.getAllBatches();
   }
 }
